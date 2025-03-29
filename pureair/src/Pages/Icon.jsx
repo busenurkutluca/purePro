@@ -1,39 +1,47 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse, faMagnifyingGlass, faPlus, faMinus, faBullhorn } from "@fortawesome/free-solid-svg-icons";
+import { faHouse, faMagnifyingGlass, faPlus, faMinus, faBullhorn, faBars, faShareAlt } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
 function Icon({ zoom, setZoom }) {
   const navigate = useNavigate();
 
+  const handleShare = () => {
+    if (navigator.share) {
+      navigator.share({
+        title: "PureAir Haritası",
+        text: "Hava kirliliği haritasını keşfet!",
+        url: window.location.href,
+      })
+        .then(() => console.log("Paylaşım başarılı!"))
+        .catch((error) => console.log("Paylaşım hatası:", error));
+    } else {
+      alert("Paylaşım özelliği bu tarayıcıda desteklenmiyor.");
+    }
+  };
+
   return (
     <div className="simge">
-      {/* Ana Sayfaya Git */}
       <div className="icon" onClick={() => navigate("/")}>
-        <FontAwesomeIcon icon={faHouse} title="Ana Sayfa" />
+        <FontAwesomeIcon icon={faHouse} title="Home Page" />
       </div>
-
-      {/* Haritada Arama */}
-      <div className="icon" onClick={() => alert("Arama açılacak")}>
-        <FontAwesomeIcon icon={faMagnifyingGlass} title="Arama" />
+      <div className="icon" onClick={() => alert("Search")}>
+        <FontAwesomeIcon icon={faMagnifyingGlass} title="Search" />
       </div>
-
-      {/* Haritayı Büyüt */}
       <div className="icon" onClick={() => setZoom(prev => prev + 1)}>
-        <FontAwesomeIcon icon={faPlus} title="Büyüt" />
+        <FontAwesomeIcon icon={faPlus} title="Zoom In" />
       </div>
-
-      {/* Haritayı Küçült */}
       <div className="icon" onClick={() => setZoom(prev => Math.max(1, prev - 1))}>
-        <FontAwesomeIcon icon={faMinus} title="Küçült" />
+        <FontAwesomeIcon icon={faMinus} title="Zoom Out" />
       </div>
-
-      {/* Bildirim Gönder (Örnek Kullanım) */}
-      <div className="icon" onClick={() => alert("Bildirim gönderildi!")}>
-        <FontAwesomeIcon icon={faBullhorn} title="Bildirim" />
+      <div className="icon" onClick={() => alert("Menu Opened")}>
+        <FontAwesomeIcon icon={faBars} title="Menu" />
       </div>
-
-      {/* Harita Zoom Seviyesi Göster */}
-      <p>Zoom: {zoom}</p>
+      <div className="icon" onClick={handleShare}>
+        <FontAwesomeIcon icon={faShareAlt} title="Share" />
+      </div>
+      <div className="icon" onClick={() => alert("Notifications Panel")}>
+        <FontAwesomeIcon icon={faBullhorn} title="Notifications" />
+      </div>
     </div>
   );
 }

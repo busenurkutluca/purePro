@@ -5,6 +5,8 @@ import Pages from "./Pages/Pages";
 import Icon from "/src/Pages/Icon.jsx"; // Türkçe karakter düzeltildi
 import Home from "/src/Pages/Home.jsx";  // Home bileşeni import edildi
 import Map from "/src/Components/Map.jsx"; // Map bileşeni import edildi
+import 'leaflet/dist/leaflet.css';
+import Components from "./Components/Components";
 
 function App() {
   const [zoom, setZoom] = useState(1); // Zoom durumu App bileşeninde tutuluyor
@@ -18,6 +20,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/map" element={<Map zoom={zoom} />} /> {/* Zoom Map'e geçiliyor */}
         </Routes>
+        <Components/>
       </div>
     </Router>
   

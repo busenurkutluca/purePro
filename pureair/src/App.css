@@ -1,12 +1,111 @@
-.app-container {
-  display: flex; /* Sidebar ve içeriği yan yana hizalar */
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Header ve Logo Stili (Mevcut) */
-.header {
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  padding: 0; /* Ekstra boşlukları kaldır */
+  width: 100vw; /* Tüm genişliği kapla */
+  height: 100vh; /* Tüm yüksekliği kapla */
+  overflow: hidden; /* Taşmayı engelle */
+  background-color: white;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+/* Sayfa Genel Konteyneri */
+.app-container {
   position: relative;
+  width: 100vw; /* Tüm genişliği kapla */
+  height: 100vh; /* Tüm yüksekliği kapla */
+  margin: 0;
+  padding: 0;
+}
+
+/* Başlık ve Zoom Göstergesi için Kapsayıcı */
+.header-content {
+  position: absolute;
+  top: 20px;
+  left: 140px;
+  z-index: 10;
+  color: white;
+  font-size: 24px;
+}
+
+.header-content h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.header-content p {
+  margin: 5px 0 0 0;
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Header ve Logo Stili */
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100px;
+  z-index: 2;
 }
 
 .pureair-logo {
@@ -19,40 +118,69 @@
   padding: 0;
   border-radius: 20px;
   border: 2px solid white;
+  z-index: 3;
 }
 
 /* İkonlar için Sidebar */
 .simge {
   position: fixed;
-  top: 150px; /* Logonun altından daha fazla boşluk (100px header + 50px boşluk) */
-  left: 20px; /* Haritanın sol kenarıyla hizalı */
-  width: 60px; /* Sidebar genişliği */
+  top: 150px;
+  left: 20px;
+  width: 60px;
   display: flex;
-  flex-direction: column; /* İkonları dikey hizalar */
-  align-items: center; /* İkonları yatayda ortalar */
+  flex-direction: column;
+  align-items: center;
+  z-index: 9999;
 }
 
 /* İkon Stili */
 .icon {
-  font-size: 20px; /* İkon boyutunu artır */
-  border: 2px solid white; /* Renk paletine uyumlu border */
-  border-radius: 20%; /* Yuvarlak çerçeve */
-  padding: 8px; /* Daha büyük çerçeve için padding artırıldı */
-  background-color: #fff; /* Arka plan beyaz */
-  color: gray; /* İkon rengi */
-  margin-bottom: 40px; /* İkonlar arasında daha fazla boşluk */
-  cursor: pointer; /* Üzerine gelindiğinde pointer gösterir */
+  font-size: 20px;
+  border: 2px solid white;
+  border-radius: 20%;
+  padding: 8px;
+  background-color: #fff;
+  color: gray;
+  margin-bottom: 20px;
+  cursor: pointer;
+  position: relative;
+  z-index: 9999;
 }
 
 /* Hover efekti */
 .icon:hover {
-  background-color: #e6f0fa; /* Hafif mavi arka plan */
+  background-color: #e6f0fa;
 }
 
 /* Zoom Göstergesi */
 .simge p {
   color: white;
   font-size: 14px;
-  margin-top: 20px; /* Zoom göstergesi ile ikonlar arasında boşluk */
-  font-family: 'Montserrat', sans-serif; /* Daha modern bir font */
+  margin-top: 20px;
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+  z-index: 9999;
+}
+
+/* Harita Konteyneri */
+.map-container {
+  width: 100vw; /* Tüm genişliği kapla */
+  height: 100vh; /* Tüm yüksekliği kapla */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: block !important;
+}
+
+.harita-baslik {
+  font-size: 200px;
+  color: gray;
+  font-family: 'Montserrat', sans-serif;
+  background-color: white; /* Beyaz arka plan */
+  padding: 10px 20px; /* İç boşluk */
+  display: inline-block; /* Kutucuğun sadece metni kaplamasını sağlar */
+  border: 4px solid gray; /* Gri çerçeve */
+  border-radius: 10px; /* Köşeleri yuvarlama (isteğe bağlı) */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Hafif gölge (isteğe bağlı) */
 }
