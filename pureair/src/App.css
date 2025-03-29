@@ -1,0 +1,58 @@
+.app-container {
+  display: flex; /* Sidebar ve içeriği yan yana hizalar */
+}
+
+/* Header ve Logo Stili (Mevcut) */
+.header {
+  position: relative;
+  width: 100%;
+  height: 100px;
+}
+
+.pureair-logo {
+  width: 100px;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  border-radius: 20px;
+  border: 2px solid white;
+}
+
+/* İkonlar için Sidebar */
+.simge {
+  position: fixed;
+  top: 150px; /* Logonun altından daha fazla boşluk (100px header + 50px boşluk) */
+  left: 20px; /* Haritanın sol kenarıyla hizalı */
+  width: 60px; /* Sidebar genişliği */
+  display: flex;
+  flex-direction: column; /* İkonları dikey hizalar */
+  align-items: center; /* İkonları yatayda ortalar */
+}
+
+/* İkon Stili */
+.icon {
+  font-size: 20px; /* İkon boyutunu artır */
+  border: 2px solid white; /* Renk paletine uyumlu border */
+  border-radius: 20%; /* Yuvarlak çerçeve */
+  padding: 8px; /* Daha büyük çerçeve için padding artırıldı */
+  background-color: #fff; /* Arka plan beyaz */
+  color: gray; /* İkon rengi */
+  margin-bottom: 40px; /* İkonlar arasında daha fazla boşluk */
+  cursor: pointer; /* Üzerine gelindiğinde pointer gösterir */
+}
+
+/* Hover efekti */
+.icon:hover {
+  background-color: #e6f0fa; /* Hafif mavi arka plan */
+}
+
+/* Zoom Göstergesi */
+.simge p {
+  color: white;
+  font-size: 14px;
+  margin-top: 20px; /* Zoom göstergesi ile ikonlar arasında boşluk */
+  font-family: 'Montserrat', sans-serif; /* Daha modern bir font */
+}
