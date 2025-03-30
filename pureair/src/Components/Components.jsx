@@ -1,8 +1,13 @@
-import Map from "/src/Components/Map.jsx"; 
+import React from "react";
+import AlertPanel from "./AlertPanel";
+import Chart from "./Chart";
+import SideBar from "./SideBar";
 function Components() {
     return (
        <>
-       <Map/>
+<AlertPanel/>
+<Chart/>
+<SideBar/>
        </>
     );
 }

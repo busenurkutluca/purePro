@@ -1,15 +1,15 @@
-// sayfalar
+import React from "react";
+import LogoPure from "./LogoPure.jsx";
+import Icon from "./Icon.jsx";
+import Map from "./Map.jsx";
 
-import Home from "/src/Pages/Home.jsx"; 
-import LogoPure from "./LogoPure";
-import Icon from "/src/Pages/Icon.jsx";
-
-function Pages() {
+function Pages({ zoom, setZoom }) {
   return (
     <div>
-      <Home/>
-      <LogoPure/>
-      <Icon/>
+      
+      <Map zoom={zoom} setZoom={setZoom} /> {/* Map bileşeni */}
+      <LogoPure />
+      <Icon zoom={zoom} setZoom={setZoom} /> {/* Icon bileşeni */}
     </div>
   );
 }
