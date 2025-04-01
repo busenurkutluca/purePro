@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 function Icon({ zoom, setZoom }) {
   const navigate = useNavigate();
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // Menü açık/kapalı durumu
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleShare = () => {
     if (navigator.share) {
@@ -22,7 +22,9 @@ function Icon({ zoom, setZoom }) {
   };
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen); // Menüyü aç/kapat
+    console.log("toggleMenu called, isMenuOpen before:", isMenuOpen); // Hata ayıklama
+    setIsMenuOpen(!isMenuOpen);
+    console.log("isMenuOpen after:", !isMenuOpen); // Hata ayıklama
   };
 
   return (

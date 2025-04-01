@@ -89,20 +89,23 @@
 }
 
 /* Açılır Menü Stili */
+/* Açılır Menü Stili */
 .menu-icon {
   position: relative;
 }
 
 .dropdown-menu {
   position: absolute;
-  top: 100%;
-  left: 70px;
+  top: 100%; /* İkonun hemen altında */
+  right: 0; /* İkonun sağından değil, soluna doğru açılacak */
+  left: auto; /* left: 70px'i iptal ediyoruz */
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   z-index: 10000;
   min-width: 200px;
+  display: block; /* Emin olmak için */
 }
 
 .dropdown-item {
