@@ -1,16 +1,19 @@
+
+//ResponsiveContainer: Grafiğin responsive olmasını sağlar, ekran boyutuna göre otomatik ölçeklenir.
+//LineChart: Çizgi grafiği oluşturur.
+//XAxis ve YAxis: X ekseni zamanı (time), Y ekseni kirlilik değerlerini gösterir.
+//Tooltip: Kullanıcı grafikte bir noktaya hover yaptığında detayları gösterir.
+//Legend: Grafikteki çizgilerin (PM2.5, PM10, vb.) açıklamasını gösterir.
+//Line: Her bir kirlilik parametresi için bir çizgi oluşturur (örneğin PM25, PM10).
+//Anomali İşaretleme: dot prop’u ile anomali olan noktalarda kırmızı bir daire (<circle>) çiziyoruz. anomaly: true olan veri noktalarında bu daire görünecek.
+
+
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-const data = [
-  { time: "2025-04-01 00:00", PM25: 10, PM10: 20, NO2: 15, SO2: 5, O3: 30, anomaly: false },
-  { time: "2025-04-01 01:00", PM25: 12, PM10: 22, NO2: 16, SO2: 6, O3: 32, anomaly: false },
-  { time: "2025-04-01 02:00", PM25: 50, PM10: 60, NO2: 40, SO2: 20, O3: 50, anomaly: true },
-  { time: "2025-04-01 03:00", PM25: 15, PM10: 25, NO2: 18, SO2: 7, O3: 35, anomaly: false },
-];
-
-function PollutionGraph() {
+function PollutionGraph({ data }) {
   return (
-    <div className="pollution-graph-container" style={{ width: '100%', height: 400 }}>
+    <div className="pollution-chart-container" style={{ width: '100%', maxWidth: '800px', height: 350 }}>
       <ResponsiveContainer>
         <LineChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" />
@@ -19,67 +22,52 @@ function PollutionGraph() {
           <Tooltip />
           <Legend />
           <Line
-            key="PM25"
             type="monotone"
             dataKey="PM25"
             stroke="#8884d8"
             name="PM2.5"
             dot={(props) => {
-              if (props.payload.anomaly) {
-                return <circle cx={props.cx} cy={props.cy} r={5} fill="red" />;
-              }
+              if (props.payload.anomaly) return <circle cx={props.cx} cy={props.cy} r={5} fill="red" />;
               return null;
             }}
           />
           <Line
-            key="PM10"
             type="monotone"
             dataKey="PM10"
             stroke="#82ca9d"
             name="PM10"
             dot={(props) => {
-              if (props.payload.anomaly) {
-                return <circle cx={props.cx} cy={props.cy} r={5} fill="red" />;
-              }
+              if (props.payload.anomaly) return <circle cx={props.cx} cy={props.cy} r={5} fill="red" />;
               return null;
             }}
           />
           <Line
-            key="NO2"
             type="monotone"
             dataKey="NO2"
             stroke="#ff7300"
             name="NO2"
             dot={(props) => {
-              if (props.payload.anomaly) {
-                return <circle cx={props.cx} cy={props.cy} r={5} fill="red" />;
-              }
+              if (props.payload.anomaly) return <circle cx={props.cx} cy={props.cy} r={5} fill="red" />;
               return null;
             }}
           />
           <Line
-            key="SO2"
             type="monotone"
             dataKey="SO2"
             stroke="#ff0000"
             name="SO2"
             dot={(props) => {
-              if (props.payload.anomaly) {
-                return <circle cx={props.cx} cy={props.cy} r={5} fill="red" />;
-              }
+              if (props.payload.anomaly) return <circle cx={props.cx} cy={props.cy} r={5} fill="red" />;
               return null;
             }}
           />
           <Line
-            key="O3"
             type="monotone"
             dataKey="O3"
             stroke="#00C49F"
             name="O3"
             dot={(props) => {
-              if (props.payload.anomaly) {
-                return <circle cx={props.cx} cy={props.cy} r={5} fill="red" />;
-              }
+              if (props.payload.anomaly) return <circle cx={props.cx} cy={props.cy} r={5} fill="red" />;
               return null;
             }}
           />
@@ -90,3 +78,63 @@ function PollutionGraph() {
 }
 
 export default PollutionGraph;
+
+/*
+function PollutionChart() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    // Backend’den veri çekme
+    fetch('http://localhost:8080/api/pollution-data?start=2025-04-01&end=2025-04-02')
+      .then(response => response.json())
+      .then(data => setData(data))
+      .catch(error => console.error('Veri çekme hatası:', error));
+  }, []);
+
+  return (
+    <div style={{ width: '100%', height: 400 }}>
+      <ResponsiveContainer>
+        <LineChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="time" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Line type="monotone" dataKey="PM25" stroke="#8884d8" name="PM2.5" dot={(props) => {
+            if (props.payload.anomaly) {
+              return <circle cx={props.cx} cy={props.cy} r={5} fill="red" />;
+            }
+            return null;
+          }} />
+          <Line type="monotone" dataKey="PM10" stroke="#82ca9d" name="PM10" dot={(props) => {
+            if (props.payload.anomaly) {
+              return <circle cx={props.cx} cy={props.cy} r={5} fill="red" />;
+            }
+            return null;
+          }} />
+          <Line type="monotone" dataKey="NO2" stroke="#ff7300" name="NO2" dot={(props) => {
+            if (props.payload.anomaly) {
+              return <circle cx={props.cx} cy={props.cy} r={5} fill="red" />;
+            }
+            return null;
+          }} />
+          <Line type="monotone" dataKey="SO2" stroke="#ff0000" name="SO2" dot={(props) => {
+            if (props.payload.anomaly) {
+              return <circle cx={props.cx} cy={props.cy} r={5} fill="red" />;
+            }
+            return null;
+          }} />
+          <Line type="monotone" dataKey="O3" stroke="#00C49F" name="O3" dot={(props) => {
+            if (props.payload.anomaly) {
+              return <circle cx={props.cx} cy={props.cy} r={5} fill="red" />;
+            }
+            return null;
+          }} />
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
+  );
+}
+
+export default PollutionChart;
+*/

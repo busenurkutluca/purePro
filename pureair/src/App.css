@@ -82,6 +82,7 @@
   cursor: pointer;
   position: relative;
   z-index: 9999;
+  
 }
 
 .icon:hover {
@@ -120,3 +121,6 @@
 .dropdown-item:hover {
   background-color: #e6f0fa;
 }
+
+
+/* Grafik Stilleri */
