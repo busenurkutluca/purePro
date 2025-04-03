@@ -7,6 +7,11 @@ import Components from "/src/Components/Components.jsx";
 import Graph from "/src/Graph/Graph.jsx";
 import DetayliAnaliz from "./Graph/DetayliAnaliz";
 import 'leaflet/dist/leaflet.css';
+import Gizlilik from "./Footer/Gizlilik";
+import Hakkimizda from "./Footer/Hakkimizda";
+import Iletisim from "./Footer/Iletisim";
+
+
 
 function App() {
   const [zoom, setZoom] = useState(10);
@@ -19,8 +24,10 @@ function App() {
           <Route path="/map" element={<Pages zoom={zoom} setZoom={setZoom} />} />
           <Route path="/components" element={<Components />} />
           <Route path="/graph" element={<Graph />} />
-          <Route path="/anormal-degerler" element={<div><h1>Anormal Değerler</h1></div>} />
-          <Route path="/detayli-analiz" element={<DetayliAnaliz />} /> {/* DetayliAnaliz bileşeni eklendi */}
+          <Route path="/detayli-analiz" element={<DetayliAnaliz />} />
+          <Route path="/gizlilik" element={<Gizlilik />} /> {/* Gizlilik sayfası */}
+          <Route path="/hakkimizda" element={<Hakkimizda />} /> {/* Hakkımızda sayfası */}
+          <Route path="/iletisim" element={<Iletisim />} /> {/* İletişim sayfası */}
           <Route path="*" element={<div><h1>404 - Sayfa Bulunamadı</h1></div>} />
         </Routes>
       </div>

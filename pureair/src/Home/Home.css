@@ -1,35 +1,134 @@
 /* src/Home/Home.css */
 .home-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .home-title {
-    font-size: 30px;
-    color: gray;
-    font-family: 'Montserrat', sans-serif;
-    background-color: white;
-    padding: 8px 16px;
-    border: 3px solid gray;
-    border-radius: 8px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .home-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .home-button:hover {
-    background-color: #0056b3;
-  }
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; /* Footer'ı alta sabitlemek için */
+  position: relative;
+  background-color: #f5f5f5; /* Diğer sayfalarla uyumlu arka plan */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Header bölümü */
+.home-header {
+  width: 100%;
+  max-width: 1200px; /* Diğer içeriklerle uyumlu maksimum genişlik */
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.header-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Yönlendirme ikonları (Logonun altında, dikey) */
+.nav-icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px; /* Logo ile ikonlar arasında boşluk */
+  margin-left: 20px; /* Logonun hizasında hafif kaydırma */
+}
+
+.nav-icon {
+  font-size: 20px;
+  border: 2px solid white;
+  border-radius: 20%;
+  padding: 8px;
+  background-color: #fff;
+  color: gray; /* Diğer sayfalardaki ikon rengi */
+  margin-bottom: 20px; /* İkonlar arası boşluk */
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.nav-icon:hover {
+  background-color: #e6f0fa; /* Diğer sayfalardaki hover efekti */
+}
+
+/* Sosyal medya ikonları (Sağda, logo hizasında) */
+.social-media-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.social-icon {
+  font-size: 20px;
+  border: 2px solid white;
+  border-radius: 20%;
+  padding: 8px;
+  background-color: #fff;
+  color: gray; /* Diğer sayfalardaki ikon rengi */
+  margin-bottom: 20px; /* İkonlar arası boşluk */
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.social-icon:hover {
+  background-color: #e6f0fa; /* Hover efekti */
+}
+
+/* Fotoğraflar (Ortada, yatay hizada) */
+.image-scroll-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px; /* Diğer içeriklerle uyumlu maksimum genişlik */
+  margin: 20px 0; /* Üstte ve altta boşluk */
+}
+
+.home-image {
+  width: 30%; /* Üç fotoğraf yatayda sığsın */
+  height: auto;
+  margin: 0 10px; /* Fotoğraflar arası boşluk */
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Diğer sayfalardaki gölge efekti */
+}
+
+/* Footer stilleri */
+.footer-content {
+  width: 100%;
+  max-width: 1200px; /* Diğer içeriklerle uyumlu genişlik */
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Diğer sayfalardaki gölge */
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 30px; /* Linkler arası boşluk */
+  margin-bottom: 15px; /* Linkler ile copyright arasındaki boşluk */
+}
+
+.footer-map {
+  font-size: 16px; /* Okunabilir bir boyut */
+  color: gray; /* Diğer sayfalardaki yazı rengiyle uyumlu */
+  cursor: pointer;
+  transition: color 0.3s; /* Hover için yumuşak geçiş */
+}
+
+.footer-map:hover {
+  color: #e6f0fa; /* Hover efekti diğer sayfalara benzer */
+}
+
+/* Copyright metni için özel stil */
+.footer-content p {
+  font-size: 14px; /* Biraz daha küçük, zarif bir boyut */
+  color: #555; /* Hafif koyu gri ton */
+  margin: 0; /* Varsayılan boşluğu kaldır */
+}
