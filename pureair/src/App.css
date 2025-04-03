@@ -1,23 +1,12 @@
-/* Sayfa Genel Konteyneri */
+/* App.css */
 .app-container {
-  position: relative;
   width: 100vw;
   height: 100vh;
   margin: 0;
   padding: 0;
   overflow: hidden;
+  background-color: #f0f0f0; /* Tüm sayfalarda ortak arka plan rengi */
 }
-
-/* Header ve Logo Stili */
-.header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  z-index: 2; /* Header arka planda kalacak */
-}
-
 
 .pureair-logo {
   width: 100px;
@@ -27,100 +16,5 @@
   left: 20px;
   border-radius: 20px;
   border: 2px solid white;
-  z-index: 3; /* Logo her zaman üstte olacak */
+  z-index: 10; /* Logo her zaman üstte olacak */
 }
-
-/* Harita Konteyneri */
-.map-container {
-  width: 100vw; /* Tüm ekran genişliğini kapla */
-  height: 100vh; /* Tüm ekran yüksekliğini kapla */
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1; /* Harita diğer bileşenlerin arkasında kalacak */
-  display: block !important;
-}
-
-/* Harita Başlık Stili */
-.harita-baslik {
-  font-size: 30px;
-  color: gray;
-  font-family: 'Montserrat', sans-serif;
-  background-color: white;
-  padding: 8px 16px;
-  display: inline-block;
-  border: 3px solid gray;
-  border-radius: 8px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-  position: absolute;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 5; /* Başlık üstte olacak */
-}
-
-/* Sidebar ve İkonlar */
-.simge {
-  position: fixed;
-  top: 200px;
-  right: 20px;
-  width: 60px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  z-index: 9999; /* İkonlar her zaman en üstte olacak */
-}
-
-.icon {
-  font-size: 20px;
-  border: 2px solid white;
-  border-radius: 20%;
-  padding: 8px;
-  background-color: #fff;
-  color: gray;
-  margin-bottom: 20px;
-  cursor: pointer;
-  position: relative;
-  z-index: 9999;
-  
-}
-
-.icon:hover {
-  background-color: #e6f0fa;
-}
-
-/* Açılır Menü Stili */
-/* Açılır Menü Stili */
-.menu-icon {
-  position: relative;
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: 100%; /* İkonun hemen altında */
-  right: 0; /* İkonun sağından değil, soluna doğru açılacak */
-  left: auto; /* left: 70px'i iptal ediyoruz */
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  z-index: 10000;
-  min-width: 200px;
-  display: block; /* Emin olmak için */
-}
-
-.dropdown-item {
-  padding: 10px 15px;
-  color: #333;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.dropdown-item:hover {
-  background-color: #e6f0fa;
-}
-
-
-/* Grafik Stilleri */

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse, faMagnifyingGlass, faPlus, faMinus, faBullhorn, faBars, faShareAlt } from "@fortawesome/free-solid-svg-icons";
+import { faHouse, faMagnifyingGlass, faPlus, faMinus, faBars, faShareAlt, faBullhorn } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
 function Icon({ zoom, setZoom }) {
@@ -22,9 +22,9 @@ function Icon({ zoom, setZoom }) {
   };
 
   const toggleMenu = () => {
-    console.log("toggleMenu called, isMenuOpen before:", isMenuOpen); // Hata ayıklama
+    console.log("toggleMenu called, isMenuOpen before:", isMenuOpen);
     setIsMenuOpen(!isMenuOpen);
-    console.log("isMenuOpen after:", !isMenuOpen); // Hata ayıklama
+    console.log("isMenuOpen after:", !isMenuOpen);
   };
 
   return (
@@ -48,14 +48,11 @@ function Icon({ zoom, setZoom }) {
             <div className="dropdown-item" onClick={() => navigate("/map")}>
               Map
             </div>
-            <div className="dropdown-item" onClick={() => navigate("/components")}>
-              Grafikler
-            </div>
-            <div className="dropdown-item" onClick={() => navigate("/anormal-degerler")}>
-              Anormal Değerler
+            <div className="dropdown-item" onClick={() => navigate("/graph")}>
+              Graphics
             </div>
             <div className="dropdown-item" onClick={() => navigate("/detayli-analiz")}>
-              Detaylı Analiz Görüntüleme Ekranı
+              Detailed Analysis
             </div>
           </div>
         )}

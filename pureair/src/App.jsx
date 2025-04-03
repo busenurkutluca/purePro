@@ -4,11 +4,12 @@ import "./App.css";
 import Pages from "/src/Pages/Pages.jsx";
 import Home from "/src/Home/Home.jsx";
 import Components from "/src/Components/Components.jsx";
+import Graph from "/src/Graph/Graph.jsx";
+import DetayliAnaliz from "./Graph/DetayliAnaliz";
 import 'leaflet/dist/leaflet.css';
-import Graph from "./Graph/Graph.jsx";
 
 function App() {
-  const [zoom, setZoom] = useState(1);
+  const [zoom, setZoom] = useState(10);
 
   return (
     <Router>
@@ -17,11 +18,11 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/map" element={<Pages zoom={zoom} setZoom={setZoom} />} />
           <Route path="/components" element={<Components />} />
+          <Route path="/graph" element={<Graph />} />
           <Route path="/anormal-degerler" element={<div><h1>Anormal Değerler</h1></div>} />
-          <Route path="/detayli-analiz" element={<div><h1>Detaylı Analiz Görüntüleme Ekranı</h1></div>} />
+          <Route path="/detayli-analiz" element={<DetayliAnaliz />} /> {/* DetayliAnaliz bileşeni eklendi */}
           <Route path="*" element={<div><h1>404 - Sayfa Bulunamadı</h1></div>} />
         </Routes>
-        <Graph/>
       </div>
     </Router>
   );

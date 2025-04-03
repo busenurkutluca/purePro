@@ -1,9 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet';
-import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-
-
 
 function Map({ zoom: initialZoom, setZoom }) {
   const [zoom, setLocalZoom] = useState(initialZoom || 10);
@@ -13,7 +10,7 @@ function Map({ zoom: initialZoom, setZoom }) {
   useEffect(() => {
     if (mapRef.current) {
       mapRef.current.setZoom(zoom);
-      mapRef.current.invalidateSize(); // Harita boyutlarını güncelle
+      mapRef.current.invalidateSize();
     }
   }, [zoom]);
 
@@ -21,17 +18,9 @@ function Map({ zoom: initialZoom, setZoom }) {
     setLocalZoom(initialZoom);
   }, [initialZoom]);
 
-  const handleZoomChange = (newZoom) => {
-    setLocalZoom(newZoom);
-    setZoom(newZoom);
-  };
-
   return (
-    <div className="app-container">
-      <div className="header-content">
-        <h1 className="harita-baslik">Hava Kirliliği Haritası</h1>
-      </div>
-
+    <div>
+      <h1 className="map-title">Air Pollution Map</h1>
       <MapContainer
         className="map-container"
         center={position}
@@ -39,7 +28,11 @@ function Map({ zoom: initialZoom, setZoom }) {
         zoomControl={false}
         ref={mapRef}
         style={{ width: '100%', height: '100%' }}
-        onZoomEnd={(e) => handleZoomChange(e.target.getZoom())}
+        onZoomEnd={(e) => {
+          const newZoom = e.target.getZoom();
+          setLocalZoom(newZoom);
+          setZoom(newZoom);
+        }}
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -49,7 +42,5 @@ function Map({ zoom: initialZoom, setZoom }) {
     </div>
   );
 }
-  
-
 
 export default Map;

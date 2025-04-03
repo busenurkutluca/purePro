@@ -1,10 +1,9 @@
-// GraphMenu.js
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse, faMap, faChartLine, faMagnifyingGlassChart } from "@fortawesome/free-solid-svg-icons";
+import { faHouse, faMap, faChartLine } from "@fortawesome/free-solid-svg-icons";
 
-function GraphMenu() {
+function DetayliAnalizMenü() {
   const navigate = useNavigate();
   return (
     <div className="graph-menu">
@@ -14,12 +13,12 @@ function GraphMenu() {
       <div className="graph-icon" onClick={() => navigate("/map")} title="Back To Map">
         <FontAwesomeIcon icon={faMap} />
       </div>
-      <div className="graph-icon" onClick={() => navigate("/detayli-analiz")} title="Analyze The Graph İn Detail">
-        <FontAwesomeIcon icon={faMagnifyingGlassChart} />
-      </div>
     
+      <div className="graph-icon" onClick={() => navigate("/graph")} title="Back To Graph">
+        <FontAwesomeIcon icon={faChartLine} />
+      </div>
     </div>
   );
 }
 
-export default GraphMenu;
+export default DetayliAnalizMenü;

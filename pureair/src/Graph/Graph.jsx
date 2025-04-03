@@ -1,10 +1,13 @@
-// Graph.js
 import React from 'react';
 import PollutionGraph from './PollutionGraph';
 import GraphLogo from './GraphLogo';
 import GraphPage from './GraphPage';
 import AlertPanel from './AlertPanel';
 import GraphMenu from './GraphMenu';
+import './Graph.css';
+import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHouse, faMap, faChartLine } from "@fortawesome/free-solid-svg-icons";
 
 const data = [
   { time: "2025-04-01 00:00", PM25: 10, PM10: 20, NO2: 15, SO2: 5, O3: 30, anomaly: false },
@@ -14,19 +17,15 @@ const data = [
 ];
 
 function Graph() {
-  const anomalies = data.filter(item => item.anomaly); // Anomali olan verileri filtrele
-
   return (
-    <div className="graph-container" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+    <div className="graph-container">
       <GraphPage />
-      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '20px' }}>
-        <PollutionGraph data={data} />
-        <AlertPanel anomalies={anomalies} />
-      </div>
       <GraphLogo />
-      <GraphMenu/>
+      <div className="graph-content">
+        <PollutionGraph data={data} />
+      </div>
+      <GraphMenu />
     </div>
-    
   );
 }
 

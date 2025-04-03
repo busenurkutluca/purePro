@@ -4,13 +4,13 @@ import LogoPure from '../Pages/LogoPure';
 
 function HomePage() {
   return (
-    <div className="app-container">
+    <div className="home-container">
       <LogoPure />
       <div style={{ padding: '20px' }}>
-        <h1>Hoş Geldiniz! Bu Ana Sayfamız</h1>
+        <h1 className="home-title">Hoş Geldiniz! Bu Ana Sayfamız</h1>
         <p>Bu, PureAir uygulamasının ana sayfasıdır.</p>
         <Link to="/map">
-          <button>Hava Kirliliği Haritasına Git</button>
+          <button className="home-button">Hava Kirliliği Haritasına Git</button>
         </Link>
       </div>
     </div>
