@@ -5,77 +5,78 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between; /* Footer'ı alta sabitlemek için */
+  justify-content: space-between;
   position: relative;
-  background-color: #f5f5f5; /* Diğer sayfalarla uyumlu arka plan */
-  padding: 20px;
+  background: linear-gradient(135deg, #e6f0fa 0%, #f5f5f5 100%);
+  padding: 0;
   box-sizing: border-box;
 }
 
 /* Header bölümü */
 .home-header {
   width: 100%;
-  max-width: 1200px; /* Diğer içeriklerle uyumlu maksimum genişlik */
-  position: relative;
-  margin-bottom: 20px;
-}
-
-.header-content {
-  position: relative;
+  max-width: 1200px;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: row;
+  align-items: center; /* Dikeyde ortala */
+  justify-content: space-between; /* Elemanları dağıt: logo solda, başlık ortada, ikonlar sağda */
+  margin-bottom: 10px;
+  padding: 20px;
+  min-height: 80px; /* Elemanların hizalanması için sabit bir yükseklik */
 }
 
-/* Yönlendirme ikonları (Logonun altında, dikey) */
+/* Logo kapsayıcısı */
+.logo-container {
+  display: flex;
+  align-items: center; /* Logoyu dikeyde ortala */
+  z-index: 10;
+}
+
+/* Logo (pureair-logo sınıfı App.css’ten geliyor, burada override ediyoruz) */
+.pureair-logo {
+  width: 60px; /* Logonun boyutunu sabitledik */
+  height: auto;
+}
+
+/* Başlık */
+.page-title {
+  font-size: 36px;
+  font-family: 'Montserrat', sans-serif;
+  color: gray;
+  margin: 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  text-align: center;
+  line-height: 1;
+  margin-left: 50px;
+
+}
+
+/* Yönlendirme ikonları */
 .nav-icon-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  margin-top: 10px; /* Logo ile ikonlar arasında boşluk */
-  margin-left: 20px; /* Logonun hizasında hafif kaydırma */
+  justify-content: center;
+  gap: 20px;
+  z-index: 5;
+  margin-right: 10px; /* İkonları daha sağa kaydırmak için sağdan boşluk azalttık */
 }
 
+/* Yönlendirme ikonları */
 .nav-icon {
   font-size: 20px;
   border: 2px solid white;
   border-radius: 20%;
   padding: 8px;
   background-color: #fff;
-  color: gray; /* Diğer sayfalardaki ikon rengi */
-  margin-bottom: 20px; /* İkonlar arası boşluk */
+  color: gray;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .nav-icon:hover {
-  background-color: #e6f0fa; /* Diğer sayfalardaki hover efekti */
-}
-
-/* Sosyal medya ikonları (Sağda, logo hizasında) */
-.social-media-container {
-  position: absolute;
-  top: 0;
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.social-icon {
-  font-size: 20px;
-  border: 2px solid white;
-  border-radius: 20%;
-  padding: 8px;
-  background-color: #fff;
-  color: gray; /* Diğer sayfalardaki ikon rengi */
-  margin-bottom: 20px; /* İkonlar arası boşluk */
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.social-icon:hover {
-  background-color: #e6f0fa; /* Hover efekti */
+  background-color: #e6f0fa;
 }
 
 /* Fotoğraflar (Ortada, yatay hizada) */
@@ -84,51 +85,107 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 1000px; /* Diğer içeriklerle uyumlu maksimum genişlik */
-  margin: 20px 0; /* Üstte ve altta boşluk */
+  max-width: 1200px;
+  margin: 10px 0;
+  padding: 0 20px;
 }
 
 .home-image {
-  width: 30%; /* Üç fotoğraf yatayda sığsın */
+  width: 350px;
   height: auto;
-  margin: 0 10px; /* Fotoğraflar arası boşluk */
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Diğer sayfalardaki gölge efekti */
+  margin: 0 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  border: 2px solid #e6f0fa;
+}
+
+.home-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.home-image.enlarged {
+  transform: scale(1.3);
+  z-index: 100;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Fotoğrafların altına açıklama */
+.image-description {
+  text-align: center;
+  margin: 20px 0;
+  max-width: 800px;
+}
+
+.image-description p {
+  font-size: 18px;
+  font-family: 'Montserrat', sans-serif;
+  color: gray;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Sosyal medya ikonları (Fotoğrafların altında, footer’ın üstünde, yatay sıralı) */
+.social-media-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 10px 0;
+  z-index: 5;
+}
+
+/* Sosyal medya ikonları */
+.social-icon {
+  font-size: 20px;
+  border: 2px solid white;
+  border-radius: 20%;
+  padding: 8px;
+  background-color: #fff;
+  color: gray;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.social-icon:hover {
+  background-color: #e6f0fa;
 }
 
 /* Footer stilleri */
 .footer-content {
-  width: 100%;
-  max-width: 1200px; /* Diğer içeriklerle uyumlu genişlik */
-  padding: 20px;
+  width: 100vw;
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Diğer sayfalardaki gölge */
+  padding: 15px 0;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
   font-family: 'Montserrat', sans-serif;
   text-align: center;
+  position: relative;
+  left: 0;
 }
 
 .footer-links {
   display: flex;
   justify-content: center;
-  gap: 30px; /* Linkler arası boşluk */
-  margin-bottom: 15px; /* Linkler ile copyright arasındaki boşluk */
+  gap: 30px;
+  margin-bottom: 10px;
 }
 
 .footer-map {
-  font-size: 16px; /* Okunabilir bir boyut */
-  color: gray; /* Diğer sayfalardaki yazı rengiyle uyumlu */
+  font-size: 16px;
+  color: gray;
   cursor: pointer;
-  transition: color 0.3s; /* Hover için yumuşak geçiş */
+  transition: color 0.3s;
 }
 
 .footer-map:hover {
-  color: #e6f0fa; /* Hover efekti diğer sayfalara benzer */
+  color: #e6f0fa;
 }
 
-/* Copyright metni için özel stil */
 .footer-content p {
-  font-size: 14px; /* Biraz daha küçük, zarif bir boyut */
-  color: #555; /* Hafif koyu gri ton */
-  margin: 0; /* Varsayılan boşluğu kaldır */
+  font-size: 14px;
+  color: #555;
+  margin: 0;
 }

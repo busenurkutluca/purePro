@@ -8,13 +8,13 @@ function Footer() {
     <div className="footer-content">
       <div className="footer-links">
         <div className="footer-map" onClick={() => navigate("/gizlilik")}>
-          Gizlilik
+        Privacy
         </div>
         <div className="footer-map" onClick={() => navigate("/hakkimizda")}>
-          Hakkımızda
+        About Us
         </div>
         <div className="footer-map" onClick={() => navigate("/iletisim")}>
-          İletişim
+        Contact
         </div>
       </div>
       <div className="footer-map">
