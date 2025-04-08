@@ -17,16 +17,24 @@ function Map({ zoom: initialZoom, setZoom }) {
   ];
 
   useEffect(() => {
-    // Leaflet.heat'i dinamik olarak yükle
-    import('leaflet.heat') // dist/leaflet.heat.js yerine sadece leaflet.heat
+    import('leaflet.heat')
       .then(() => {
         if (mapRef.current && typeof L.heatLayer === 'function') {
           const map = mapRef.current;
 
+          // Isı haritasını oluştururken renk gradyanını bildirim paneliyle uyumlu hale getiriyoruz
           const heatLayer = L.heatLayer(pollutionData, {
             radius: 25,
             blur: 15,
             maxZoom: 17,
+            gradient: {
+              0.0: '#00FF00', // Good (0-50)
+              0.2: '#FFFF00', // Moderate (50-100)
+              0.4: '#FFA500', // Unhealthy for Sensitive Groups (100-150)
+              0.6: '#FF0000', // Unhealthy (150-200)
+              0.8: '#800080', // Very Unhealthy (200-300)
+              1.0: '#8B0000', // Hazardous (300-500)
+            },
           }).addTo(map);
 
           map.on('click', (e) => {

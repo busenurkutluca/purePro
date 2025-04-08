@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import LogoPure from "./LogoPure.jsx";
 import Icon from "./Icon.jsx";
 import Map from "./Map.jsx";
+import NotificationPanel from "./NotificationPanel.jsx"; // Bildirim panelini import edin
 import './Pages.css';
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,6 +16,7 @@ function Pages({ zoom, setZoom }) {
       <Map zoom={zoom} setZoom={setZoom} />
       <LogoPure />
       <Icon zoom={zoom} setZoom={setZoom} />
+      <NotificationPanel /> {/* Bildirim panelini ekleyin */}
     </div>
   );
 }
