@@ -60,7 +60,7 @@ function Icon({ zoom, setZoom }) {
       <div className="icon" onClick={handleShare}>
         <FontAwesomeIcon icon={faShareAlt} title="Share" />
       </div>
-      <div className="icon" onClick={() => alert("Notifications Panel")}>
+      <div className="icon" onClick={() => navigate ("/notifications")}>
         <FontAwesomeIcon icon={faBullhorn} title="Notifications" />
       </div>
     </div>

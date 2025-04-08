@@ -1,89 +1,190 @@
 /* src/Pages/Pages.css */
 .map-page-container {
-    position: relative;
-    width: 100%;
-    height: 100%; /* Haritanın tam ekran olması için */
-  }
-  
-  .map-container {
-    width: 100vw; /* Harita tam genişlikte */
-    height: 100vh; /* Harita tam yükseklikte */
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1; /* Harita, ikonların altında kalsın */
-  }
-  
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.map-container {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.map-title {
+  font-size: 30px;
+  color: gray;
+  font-family: 'Montserrat', sans-serif;
+  background-color: white;
+  padding: 8px 16px;
+  display: inline-block;
+  border: 3px solid gray;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+.simge {
+  position: fixed;
+  top: 200px;
+  right: 20px;
+  width: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 9999;
+}
+
+.icon {
+  font-size: 20px;
+  border: 2px solid white;
+  border-radius: 20%;
+  padding: 8px;
+  background-color: #fff;
+  color: gray;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.icon:hover {
+  background-color: #e6f0fa;
+}
+
+.menu-icon {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 10001;
+  min-width: 200px;
+  padding: 5px;
+  display: block;
+}
+
+.dropdown-item {
+  padding: 10px 15px;
+  color: #333;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dropdown-item:hover {
+  background-color: #e6f0fa;
+}
+
+.search-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 10001;
+  padding: 10px;
+  width: 200px;
+}
+
+.search-dropdown input {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 5px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+.search-results {
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.search-results .dropdown-item {
+  padding: 5px 10px;
+}
+
+.search-results .dropdown-item:hover {
+  background-color: #e6f0fa;
+}
+
+/* Responsive Ayarları */
+@media (max-width: 768px) {
   .map-title {
-    font-size: 30px;
-    color: gray;
-    font-family: 'Montserrat', sans-serif;
-    background-color: white;
-    padding: 8px 16px;
-    display: inline-block;
-    border: 3px solid gray;
-    border-radius: 8px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 5; /* Başlık haritanın üstünde */
+    font-size: 24px;
+    padding: 6px 12px;
   }
-  
+
   .simge {
-    position: fixed;
-    top: 200px;
-    right: 20px;
-    width: 60px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 9999; /* İkonlar haritanın üstünde */
+    top: 150px;
+    right: 10px;
+    width: 50px;
   }
-  
+
   .icon {
-    font-size: 20px;
-    border: 2px solid white;
-    border-radius: 20%;
-    padding: 8px;
-    background-color: #fff;
-    color: gray;
-    margin-bottom: 20px;
-    cursor: pointer;
+    font-size: 18px;
+    padding: 6px;
   }
-  
-  .icon:hover {
-    background-color: #e6f0fa;
-  }
-  
-  .menu-icon {
-    position: relative; /* Menü ikonunun konumu için önemli */
-  }
-  
+
   .dropdown-menu {
-    position: absolute;
-    top: 100%; /* İkonun hemen altında */
-    right: 0; /* Sağ tarafa hizalı */
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    z-index: 10001; /* Harita veya diğer öğelerin üstünde */
-    min-width: 200px;
-    padding: 5px;
-    display: block; /* Görünür olduğundan emin olmak için */
+    min-width: 180px;
   }
-  
+
   .dropdown-item {
-    padding: 10px 15px;
-    color: #333;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    font-size: 12px;
+    padding: 8px 12px;
   }
-  
-  .dropdown-item:hover {
-    background-color: #e6f0fa;
+
+  .search-dropdown {
+    width: 180px;
   }
+
+  .search-dropdown input {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .map-title {
+    font-size: 20px;
+    padding: 5px 10px;
+  }
+
+  .simge {
+    top: 120px;
+    right: 5px;
+    width: 40px;
+  }
+
+  .icon {
+    font-size: 16px;
+    padding: 5px;
+  }
+
+  .dropdown-menu {
+    min-width: 150px;
+  }
+
+  .dropdown-item {
+    font-size: 10px;
+    padding: 6px 10px;
+  }
+
+  .search-dropdown {
+    width: 150px;
+  }
+}

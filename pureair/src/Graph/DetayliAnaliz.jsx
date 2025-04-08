@@ -28,7 +28,30 @@ function DetayliAnaliz() {
       <div className="detayli-analiz-content">
         <div className="legend-container">
           <h3 className="legend-title">Line Descriptions</h3>
-          {/* Legend içeriği aynı kalabilir */}
+          <div className="legend-item">
+            <span className="legend-color" style={{ backgroundColor: '#6a5acd' }}></span>
+            PM2.5: Fine Particulate Matter (2.5 microns)
+          </div>
+          <div className="legend-item">
+            <span className="legend-color" style={{ backgroundColor: '#00ced1' }}></span>
+            PM10: Particulate Matter (10 microns)
+          </div>
+          <div className="legend-item">
+            <span className="legend-color" style={{ backgroundColor: '#ffa500' }}></span>
+            NO2: Nitrogen Dioxide
+          </div>
+          <div className="legend-item">
+            <span className="legend-color" style={{ backgroundColor: '#ff4500' }}></span>
+            SO2: Sulfur Dioxide
+          </div>
+          <div className="legend-item">
+            <span className="legend-color" style={{ backgroundColor: '#9932cc' }}></span>
+            O3: Ozone
+          </div>
+          <div className="legend-item">
+            <span className="legend-color anomaly-dot"></span>
+            Anomaly: Above threshold values
+          </div>
         </div>
         <AlertPanel anomalies={anomalies} />
       </div>

@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import "leaflet.heat";
 import { useNavigate } from 'react-router-dom';
 
 function Map({ zoom: initialZoom, setZoom }) {
@@ -12,37 +11,44 @@ function Map({ zoom: initialZoom, setZoom }) {
   const navigate = useNavigate();
 
   const pollutionData = [
-    [51.51, -0.08, 50],
+    [51.51, -0.08, 50], // [lat, lng, intensity]
     [51.50, -0.09, 30],
     [51.49, -0.07, 70],
   ];
 
   useEffect(() => {
-    if (mapRef.current) {
-      const map = mapRef.current;
+    // Leaflet.heat'i dinamik olarak yükle
+    import('leaflet.heat') // dist/leaflet.heat.js yerine sadece leaflet.heat
+      .then(() => {
+        if (mapRef.current && typeof L.heatLayer === 'function') {
+          const map = mapRef.current;
 
-      const heatLayer = L.heatLayer(pollutionData, {
-        radius: 25,
-        blur: 15,
-        maxZoom: 17,
-      }).addTo(map);
+          const heatLayer = L.heatLayer(pollutionData, {
+            radius: 25,
+            blur: 15,
+            maxZoom: 17,
+          }).addTo(map);
 
-      // Haritaya tıklama olayını ekle
-      map.on('click', (e) => {
-        const { lat, lng } = e.latlng;
-        console.log(`Seçilen bölge: Lat: ${lat}, Lng: ${lng}`);
-        // Seçilen koordinatları detaylı analiz sayfasına aktar
-        navigate('/detayli-analiz', { state: { lat, lng } });
+          map.on('click', (e) => {
+            const { lat, lng } = e.latlng;
+            console.log(`Seçilen bölge: Lat: ${lat}, Lng: ${lng}`);
+            navigate('/detayli-analiz', { state: { lat, lng } });
+          });
+
+          map.setZoom(zoom);
+          map.invalidateSize();
+
+          return () => {
+            map.removeLayer(heatLayer);
+            map.off('click');
+          };
+        } else {
+          console.error('L.heatLayer fonksiyonu mevcut değil. Leaflet.heat yüklenmedi.');
+        }
+      })
+      .catch((err) => {
+        console.error('Leaflet.heat yüklenirken hata oluştu:', err);
       });
-
-      map.setZoom(zoom);
-      map.invalidateSize();
-
-      return () => {
-        map.removeLayer(heatLayer);
-        map.off('click');
-      };
-    }
   }, [zoom, navigate]);
 
   useEffect(() => {

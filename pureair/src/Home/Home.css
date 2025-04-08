@@ -1,6 +1,7 @@
 /* src/Home/Home.css */
 .home-container {
-  min-height: 100vh;
+  min-height: 100vh; /* Minimum yükseklik ekran yüksekliği kadar */
+  height: auto; /* İçerik taşarsa yükseklik artsın */
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -13,34 +14,33 @@
   background-repeat: no-repeat;
   padding: 0;
   box-sizing: border-box;
+  overflow-y: auto; /* Dikey kaydırma aktif */
+  overflow-x: hidden; /* Yatay taşmayı engelle */
 }
-/* Header bölümü */
+
 .home-header {
   width: 100%;
   max-width: 1200px;
   display: flex;
   flex-direction: row;
-  align-items: center; /* Dikeyde ortala */
-  justify-content: space-between; /* Elemanları dağıt: logo solda, başlık ortada, ikonlar sağda */
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 10px;
   padding: 20px;
-  min-height: 80px; /* Elemanların hizalanması için sabit bir yükseklik */
+  min-height: 80px;
 }
 
-/* Logo kapsayıcısı */
 .logo-container {
   display: flex;
-  align-items: center; /* Logoyu dikeyde ortala */
+  align-items: center;
   z-index: 10;
 }
 
-/* Logo (pureair-logo sınıfı App.css’ten geliyor, burada override ediyoruz) */
 .pureair-logo {
-  width: 60px; /* Logonun boyutunu sabitledik */
+  width: 60px;
   height: auto;
 }
 
-/* Başlık */
 .page-title {
   font-size: 36px;
   font-family: 'Montserrat', sans-serif;
@@ -50,11 +50,8 @@
   flex: 1;
   text-align: center;
   line-height: 1;
-  margin-left: 50px;
-
 }
 
-/* Yönlendirme ikonları */
 .nav-icon-container {
   display: flex;
   flex-direction: row;
@@ -62,10 +59,8 @@
   justify-content: center;
   gap: 20px;
   z-index: 5;
-  margin-right: 10px; /* İkonları daha sağa kaydırmak için sağdan boşluk azalttık */
 }
 
-/* Yönlendirme ikonları */
 .nav-icon {
   font-size: 20px;
   border: 2px solid white;
@@ -81,7 +76,6 @@
   background-color: #e6f0fa;
 }
 
-/* Fotoğraflar (Ortada, yatay hizada) */
 .image-scroll-container {
   display: flex;
   justify-content: center;
@@ -114,7 +108,6 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Fotoğrafların altına açıklama */
 .image-description {
   text-align: center;
   margin: 20px 0;
@@ -129,7 +122,6 @@
   line-height: 1.5;
 }
 
-/* Sosyal medya ikonları (Fotoğrafların altında, footer’ın üstünde, yatay sıralı) */
 .social-media-container {
   display: flex;
   flex-direction: row;
@@ -140,7 +132,6 @@
   z-index: 5;
 }
 
-/* Sosyal medya ikonları */
 .social-icon {
   font-size: 20px;
   border: 2px solid white;
@@ -156,30 +147,27 @@
   background-color: #e6f0fa;
 }
 
-/* Footer stilleri */
 .footer-content {
   width: 100vw;
-  background-color: transparent; /* Şeffaf arka plan */
-  padding: 10px 0; /* Padding'i azaltarak footer'ın yüksekliğini küçülttük */
-  box-shadow: none; /* Gölgeyi kaldırdık */
+  background-color: transparent;
+  padding: 10px 0;
+  box-shadow: none;
   font-family: 'Montserrat', sans-serif;
   text-align: center;
   position: relative;
   left: 0;
 }
 
-
-
 .footer-links {
   display: flex;
   justify-content: center;
   gap: 30px;
-  margin-bottom: 5px; /* Linkler ile telif hakkı yazısı arasındaki boşluğu azalttık */
+  margin-bottom: 5px;
 }
 
 .footer-map {
   font-size: 16px;
-  color: gray; /* Daha koyu renk */
+  color: gray;
   cursor: pointer;
   transition: color 0.3s;
 }
@@ -190,7 +178,94 @@
 
 .footer-copyright {
   font-size: 14px;
-  color: #333; /* Daha koyu renk */
+  color: #333;
   margin: 0;
-  margin-top: 5px; /* Telif hakkı yazısını yukarı çeker */
+  margin-top: 5px;
+}
+
+/* Responsive Ayarları */
+@media (max-width: 768px) {
+  .home-container {
+    min-height: 100vh; /* Minimum yükseklik korunsun */
+    height: auto; /* İçerik taşarsa yükseklik artsın */
+    overflow-y: auto; /* Dikey kaydırma aktif */
+  }
+
+  .home-header {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .page-title {
+    font-size: 28px;
+    margin: 10px 0;
+  }
+
+  .nav-icon-container {
+    gap: 15px;
+  }
+
+  .nav-icon {
+    font-size: 18px;
+    padding: 6px;
+  }
+
+  .image-scroll-container {
+    flex-direction: column;
+    padding: 0 10px;
+  }
+
+  .home-image {
+    width: 80vw;
+    margin: 10px 0;
+  }
+
+  .image-description p {
+    font-size: 16px;
+  }
+
+  .social-icon {
+    font-size: 18px;
+    padding: 6px;
+  }
+
+  .footer-map {
+    font-size: 14px;
+  }
+
+  .footer-copyright {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 24px;
+  }
+
+  .nav-icon {
+    font-size: 16px;
+    padding: 5px;
+  }
+
+  .home-image {
+    width: 90vw;
+  }
+
+  .image-description p {
+    font-size: 14px;
+  }
+
+  .social-icon {
+    font-size: 16px;
+    padding: 5px;
+  }
+
+  .footer-map {
+    font-size: 12px;
+  }
+
+  .footer-copyright {
+    font-size: 10px;
+  }
 }

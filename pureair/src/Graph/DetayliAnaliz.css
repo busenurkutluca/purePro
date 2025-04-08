@@ -1,159 +1,262 @@
 /* src/DetayliAnaliz.css */
 .detayli-analiz-container {
-    min-height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    position: relative;
-    background-color: #f5f5f5;
-    padding: 20px;
-    box-sizing: border-box;
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  background-color: #f5f5f5;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.detayli-analiz-title {
+  font-size: 30px;
+  color: gray;
+  font-family: 'Montserrat', sans-serif;
+  background-color: white;
+  padding: 8px 16px;
+  border: 3px solid gray;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+.detayli-analiz-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 80px; /* Başlık için yer aç */
+}
+
+.legend-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.legend-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  color: #555;
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.legend-color.anomaly-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: red;
+}
+
+.alert-panel {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+  max-width: 1000px;
+  margin-bottom: 20px;
+}
+
+.alert-panel.no-anomaly {
+  text-align: center;
+  color: #666;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+}
+
+.alert-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ff4d4d;
+  margin-bottom: 15px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.anomaly-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.anomaly-table th,
+.anomaly-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+}
+
+/* Sütun genişliklerini optimize etme */
+.anomaly-table th:nth-child(1),
+.anomaly-table td:nth-child(1) {
+  width: 25%; /* Time sütunu */
+}
+
+.anomaly-table th:nth-child(2),
+.anomaly-table td:nth-child(2) {
+  width: 40%; /* Values sütunu */
+}
+
+.anomaly-table th:nth-child(3),
+.anomaly-table td:nth-child(3) {
+  width: 35%; /* Reason sütunu */
+}
+
+.anomaly-table th {
+  background-color: #f9f9f9;
+  font-weight: bold;
+  color: #333;
+}
+
+.anomaly-reason {
+  color: #ff4d4d;
+  font-weight: bold;
+}
+
+.graph-menu {
+  position: fixed;
+  top: 200px;
+  right: 20px;
+  width: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 9999;
+}
+
+.graph-icon {
+  font-size: 20px;
+  border: 2px solid white;
+  border-radius: 20%;
+  padding: 8px;
+  background-color: #fff;
+  color: gray;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.graph-icon:hover {
+  background-color: #e6f0fa;
+}
+
+.pureair-logo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 100px;
+  z-index: 5;
+}
+
+/* Responsive Ayarları */
+@media (max-width: 768px) {
+  .detayli-analiz-container {
+    padding: 10px;
   }
-  
+
   .detayli-analiz-title {
-    font-size: 30px;
-    color: gray;
-    font-family: 'Montserrat', sans-serif;
-    background-color: white;
-    padding: 8px 16px;
-    border: 3px solid gray;
-    border-radius: 8px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-    margin-bottom: 20px;
+    font-size: 24px;
+    padding: 6px 12px;
   }
-  
+
   .detayli-analiz-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
+    margin-top: 60px;
   }
-  
-  .legend-container {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    margin-bottom: 20px;
-    width: 100%;
-    max-width: 1000px;
-  }
-  
-  .legend-title {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
-    font-family: 'Montserrat', sans-serif;
-  }
-  
-  .legend-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 8px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
-    color: #555;
-  }
-  
-  .legend-color {
-    width: 20px;
-    height: 20px;
-    border-radius: 4px;
-    margin-right: 10px;
-    display: inline-block;
-  }
-  
-  .legend-color.anomaly-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: red;
-  }
-  
+
+  .legend-container,
   .alert-panel {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 100%;
-    max-width: 1000px;
-    margin-bottom: 20px;
+    max-width: 90vw;
+    padding: 10px;
   }
-  
-  .alert-panel.no-anomaly {
-    text-align: center;
-    color: #666;
-    font-family: 'Montserrat', sans-serif;
+
+  .legend-title {
     font-size: 16px;
   }
-  
+
+  .legend-item {
+    font-size: 12px;
+  }
+
   .alert-title {
-    font-size: 20px;
-    font-weight: bold;
-    color: #ff4d4d;
-    margin-bottom: 15px;
-    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
   }
-  
-  .anomaly-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
+
   .anomaly-table th,
   .anomaly-table td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
-  }
-  
-  .anomaly-table th {
-    background-color: #f9f9f9;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .anomaly-reason {
-    color: #ff4d4d;
-    font-weight: bold;
-  }
-  
-  .graph-menu {
-    position: fixed;
-    top: 200px;
-    right: 20px;
-    width: 60px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 9999;
-  }
-  
-  .graph-icon {
-    font-size: 20px;
-    border: 2px solid white;
-    border-radius: 20%;
+    font-size: 12px;
     padding: 8px;
-    background-color: #fff;
-    color: gray;
-    margin-bottom: 20px;
-    cursor: pointer;
   }
-  
-  .graph-icon:hover {
-    background-color: #e6f0fa;
+
+  .graph-menu {
+    top: 150px;
+    right: 10px;
+    width: 50px;
   }
-  
+
+  .graph-icon {
+    font-size: 18px;
+    padding: 6px;
+  }
+
   .pureair-logo {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    width: 100px;
-    z-index: 5;
+    width: 80px;
   }
+}
+
+@media (max-width: 480px) {
+  .detayli-analiz-title {
+    font-size: 20px;
+    padding: 5px 10px;
+  }
+
+  .detayli-analiz-content {
+    margin-top: 50px;
+  }
+
+  .graph-menu {
+    top: 120px;
+    right: 5px;
+    width: 40px;
+  }
+
+  .graph-icon {
+    font-size: 16px;
+    padding: 5px;
+  }
+
+  .pureair-logo {
+    width: 60px;
+  }
+}

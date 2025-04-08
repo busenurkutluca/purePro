@@ -10,6 +10,7 @@ import 'leaflet/dist/leaflet.css';
 import Gizlilik from "./Footer/Gizlilik";
 import Hakkimizda from "./Footer/Hakkimizda";
 import Iletisim from "./Footer/Iletisim";
+import Notifications from "./Pages/Notifications";
 
 
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/gizlilik" element={<Gizlilik />} /> {/* Gizlilik sayfası */}
           <Route path="/hakkimizda" element={<Hakkimizda />} /> {/* Hakkımızda sayfası */}
           <Route path="/iletisim" element={<Iletisim />} /> {/* İletişim sayfası */}
+          <Route path="/notifications" element={<Notifications />} /> {/* Bildirim sayfası */}
           <Route path="*" element={<div><h1>404 - Sayfa Bulunamadı</h1></div>} />
         </Routes>
       </div>

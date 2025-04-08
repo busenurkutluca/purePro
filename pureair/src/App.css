@@ -4,8 +4,8 @@
   height: 100vh;
   margin: 0;
   padding: 0;
-  overflow: hidden;
-  background-color: #f0f0f0; /* Tüm sayfalarda ortak arka plan rengi */
+  overflow: auto; /* Kaydırmayı aktif hale getir */
+  background-color: #f0f0f0;
 }
 
 .pureair-logo {
@@ -16,5 +16,22 @@
   left: 20px;
   border-radius: 20px;
   border: 2px solid white;
-  z-index: 10; /* Logo her zaman üstte olacak */
+  z-index: 10;
+}
+
+/* Responsive Ayarları */
+@media (max-width: 768px) {
+  .pureair-logo {
+    width: 80px;
+    top: 15px;
+    left: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pureair-logo {
+    width: 60px;
+    top: 10px;
+    left: 10px;
+  }
 }
