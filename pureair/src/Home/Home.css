@@ -7,11 +7,13 @@
   align-items: center;
   justify-content: space-between;
   position: relative;
-  background: linear-gradient(135deg, #e6f0fa 0%, #f5f5f5 100%);
+  background-image: url('/arkaplan3.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding: 0;
   box-sizing: border-box;
 }
-
 /* Header bölümü */
 .home-header {
   width: 100%;
@@ -157,25 +159,27 @@
 /* Footer stilleri */
 .footer-content {
   width: 100vw;
-  background-color: white;
-  padding: 15px 0;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  background-color: transparent; /* Şeffaf arka plan */
+  padding: 10px 0; /* Padding'i azaltarak footer'ın yüksekliğini küçülttük */
+  box-shadow: none; /* Gölgeyi kaldırdık */
   font-family: 'Montserrat', sans-serif;
   text-align: center;
   position: relative;
   left: 0;
 }
 
+
+
 .footer-links {
   display: flex;
   justify-content: center;
   gap: 30px;
-  margin-bottom: 10px;
+  margin-bottom: 5px; /* Linkler ile telif hakkı yazısı arasındaki boşluğu azalttık */
 }
 
 .footer-map {
   font-size: 16px;
-  color: gray;
+  color: gray; /* Daha koyu renk */
   cursor: pointer;
   transition: color 0.3s;
 }
@@ -184,8 +188,9 @@
   color: #e6f0fa;
 }
 
-.footer-content p {
+.footer-copyright {
   font-size: 14px;
-  color: #555;
+  color: #333; /* Daha koyu renk */
   margin: 0;
+  margin-top: 5px; /* Telif hakkı yazısını yukarı çeker */
 }

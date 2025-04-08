@@ -8,18 +8,16 @@ function Footer() {
     <div className="footer-content">
       <div className="footer-links">
         <div className="footer-map" onClick={() => navigate("/gizlilik")}>
-        Privacy
+          Privacy
         </div>
         <div className="footer-map" onClick={() => navigate("/hakkimizda")}>
-        About Us
+          About Us
         </div>
         <div className="footer-map" onClick={() => navigate("/iletisim")}>
-        Contact
+          Contact
         </div>
       </div>
-      <div className="footer-map">
-        <p>© 2025 PureAir. All rights reserved.</p>
-      </div>
+     
     </div>
   );
 }

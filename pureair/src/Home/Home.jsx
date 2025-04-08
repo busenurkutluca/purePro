@@ -24,10 +24,7 @@ function Home() {
     <div className="home-container" onClick={handleContainerClick}>
       {/* Header: Logo, Başlık ve Yönlendirme İkonları */}
       <header className="home-header">
-        {/* Logo */}
-        <div className="logo-container">
-          <LogoPure className="pureair-logo" />
-        </div>
+       
 
         {/* Başlık */}
         <h1 className="page-title">A Cleaner Future with PureAir</h1>
@@ -35,7 +32,7 @@ function Home() {
         {/* Yönlendirme İkonları */}
         <div className="nav-icon-container">
           <Link to="/map">
-            <FontAwesomeIcon icon={faMap} className="nav-icon" title="Map" />
+            <FontAwesomeIcon icon={faMap} className="nav-icon" title="Map"/> 
           </Link>
           <Link to="/graph">
             <FontAwesomeIcon icon={faChartLine} className="nav-icon" title="Graph" />

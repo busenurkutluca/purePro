@@ -13,6 +13,7 @@ import Iletisim from "./Footer/Iletisim";
 
 
 
+
 function App() {
   const [zoom, setZoom] = useState(10);
 

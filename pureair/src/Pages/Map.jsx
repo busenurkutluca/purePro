@@ -1,18 +1,49 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet';
+import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import "leaflet.heat";
+import { useNavigate } from 'react-router-dom';
 
 function Map({ zoom: initialZoom, setZoom }) {
   const [zoom, setLocalZoom] = useState(initialZoom || 10);
   const position = [51.505, -0.09];
   const mapRef = useRef(null);
+  const navigate = useNavigate();
+
+  const pollutionData = [
+    [51.51, -0.08, 50],
+    [51.50, -0.09, 30],
+    [51.49, -0.07, 70],
+  ];
 
   useEffect(() => {
     if (mapRef.current) {
-      mapRef.current.setZoom(zoom);
-      mapRef.current.invalidateSize();
+      const map = mapRef.current;
+
+      const heatLayer = L.heatLayer(pollutionData, {
+        radius: 25,
+        blur: 15,
+        maxZoom: 17,
+      }).addTo(map);
+
+      // Haritaya tıklama olayını ekle
+      map.on('click', (e) => {
+        const { lat, lng } = e.latlng;
+        console.log(`Seçilen bölge: Lat: ${lat}, Lng: ${lng}`);
+        // Seçilen koordinatları detaylı analiz sayfasına aktar
+        navigate('/detayli-analiz', { state: { lat, lng } });
+      });
+
+      map.setZoom(zoom);
+      map.invalidateSize();
+
+      return () => {
+        map.removeLayer(heatLayer);
+        map.off('click');
+      };
     }
-  }, [zoom]);
+  }, [zoom, navigate]);
 
   useEffect(() => {
     setLocalZoom(initialZoom);
