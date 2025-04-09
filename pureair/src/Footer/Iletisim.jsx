@@ -24,7 +24,7 @@ const Iletisim = () => {
         <strong>Email:</strong> info@pureair.com
       </p>
       <p>
-        <strong>Address:</strong> PureAir, 1234 Air Quality St., Clean City, ABC 12345
+        <strong>Address:</strong> PureAir, 1234 Air Quality St., Clean City, ABD 12345
       </p>
     </div>
   );

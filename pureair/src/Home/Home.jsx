@@ -1,7 +1,9 @@
+// src/Home/Home.jsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import LogoPure from '../Pages/LogoPure';
 import Footer from '../Footer/Footer.jsx';
+import Weather from '../Home/Weather.jsx'; // Yeni eklenen bileşen
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { faMap, faChartLine, faMagnifyingGlassChart } from '@fortawesome/free-solid-svg-icons';
@@ -24,28 +26,23 @@ function Home() {
     <div className="home-container" onClick={handleContainerClick}>
       {/* Header: Logo, Başlık ve Yönlendirme İkonları */}
       <header className="home-header">
-       
-
-        {/* Başlık */}
         <h1 className="page-title">A Cleaner Future with PureAir</h1>
-
-        {/* Yönlendirme İkonları */}
         <div className="nav-icon-container">
           <Link to="/map">
-            <FontAwesomeIcon icon={faMap} className="nav-icon" title="Map"/> 
+            <FontAwesomeIcon icon={faMap} className="nav-icon" title="Harita"/> 
           </Link>
           <Link to="/graph">
-            <FontAwesomeIcon icon={faChartLine} className="nav-icon" title="Graph" />
+            <FontAwesomeIcon icon={faChartLine} className="nav-icon" title="Grafik" />
           </Link>
           <Link to="/detayli-analiz">
-            <FontAwesomeIcon icon={faMagnifyingGlassChart} className="nav-icon" title="Detailed Analysis" />
+            <FontAwesomeIcon icon={faMagnifyingGlassChart} className="nav-icon" title="Detaylı Analiz" />
           </Link>
         </div>
       </header>
 
       {/* Fotoğraflar */}
       <div className="image-scroll-container">
-      <img
+        <img
           src="/serrat2.png"
           className={`home-image ${enlargedImage === 2 ? 'enlarged' : ''}`}
           alt="Serrat 2"
@@ -63,7 +60,6 @@ function Home() {
             handleImageClick(1);
           }}
         />
-       
         <img
           src="/serrat3.png"
           className={`home-image ${enlargedImage === 3 ? 'enlarged' : ''}`}
@@ -77,10 +73,10 @@ function Home() {
 
       {/* Fotoğrafların altına açıklama */}
       <div className="image-description">
-        <p>Track air quality in real-time and take steps for a healthier life.</p>
+        <p>Hava kalitesini gerçek zamanlı takip edin ve daha sağlıklı bir yaşam için adımlar atın.</p>
       </div>
 
-      {/* Sosyal Medya İkonları (Fotoğrafların altında, footer’ın üstünde) */}
+      {/* Sosyal Medya İkonları */}
       <div className="social-media-container">
         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
           <FontAwesomeIcon icon={faFacebookF} className="social-icon" />
@@ -92,6 +88,9 @@ function Home() {
           <FontAwesomeIcon icon={faInstagram} className="social-icon" />
         </a>
       </div>
+
+      {/* Hava Durumu Bileşeni */}
+      <Weather />
 
       {/* Footer */}
       <Footer />

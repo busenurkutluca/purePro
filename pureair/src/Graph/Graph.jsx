@@ -5,9 +5,6 @@ import GraphPage from './GraphPage';
 import AlertPanel from './AlertPanel';
 import GraphMenu from './GraphMenu';
 import './Graph.css';
-import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse, faMap, faChartLine } from "@fortawesome/free-solid-svg-icons";
 
 const data = [
   { time: "2025-04-01 00:00", PM25: 10, PM10: 20, NO2: 15, SO2: 5, O3: 30, anomaly: false },
