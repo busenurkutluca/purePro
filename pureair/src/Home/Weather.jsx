@@ -11,6 +11,7 @@ const Weather = () => {
     const fetchWeather = async (lat, lon) => {
       try {
         const apiKey = import.meta.env.VITE_WEATHER_API;
+console.log('API Key:', apiKey);
         const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
         console.log('Oluşturulan URL:', url); // URL'yi kontrol et
         const response = await fetch(url);
