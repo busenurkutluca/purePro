@@ -1,4 +1,3 @@
-// src/components/Weather.jsx
 import React, { useState, useEffect } from 'react';
 import './Weather.css';
 
@@ -11,8 +10,8 @@ const Weather = () => {
     const fetchWeather = async (lat, lon) => {
       try {
         const apiKey = import.meta.env.VITE_WEATHER_API;
-console.log('API Key:', apiKey);
-        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+        console.log('API Key:', apiKey);
+        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=en`; // İngilizce için lang=en
         console.log('Oluşturulan URL:', url); // URL'yi kontrol et
         const response = await fetch(url);
         if (!response.ok) {
@@ -51,15 +50,15 @@ console.log('API Key:', apiKey);
     }
   }, []);
 
-  if (loading) return <div className="weather-container">Yükleniyor...</div>;
-  if (error) return <div className="weather-container">Hata: {error}</div>;
+  if (loading) return <div className="weather-container">Loading...</div>; // İngilizce için
+  if (error) return <div className="weather-container">Error: {error}</div>; // İngilizce için
 
   return (
     <div className="weather-container">
       <div className="weather-content">
         <img
           src={`http://openweathermap.org/img/wn/${weatherData.icon}.png`}
-          alt="Hava durumu simgesi"
+          alt="Weather icon"
           className="weather-icon"
         />
         <div className="weather-info">

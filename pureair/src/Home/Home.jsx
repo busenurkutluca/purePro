@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { faMap, faChartLine, faMagnifyingGlassChart } from '@fortawesome/free-solid-svg-icons';
 import './Home.css';
+import Clock from './Clock.jsx';
 
 function Home() {
   const [enlargedImage, setEnlargedImage] = useState(null);
@@ -73,7 +74,7 @@ function Home() {
 
       {/* Fotoğrafların altına açıklama */}
       <div className="image-description">
-        <p>Hava kalitesini gerçek zamanlı takip edin ve daha sağlıklı bir yaşam için adımlar atın.</p>
+        <p>"Track air quality in real time and take steps for a healthier life."</p>
       </div>
 
       {/* Sosyal Medya İkonları */}
@@ -94,6 +95,9 @@ function Home() {
 
       {/* Footer */}
       <Footer />
+
+      {/*Clock*/}
+      <Clock/>
     </div>
   );
 }
