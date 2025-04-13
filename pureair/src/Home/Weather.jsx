@@ -10,16 +10,16 @@ const Weather = () => {
     const fetchWeather = async (lat, lon) => {
       try {
         const apiKey = import.meta.env.VITE_WEATHER_API;
-        console.log('API Key:', apiKey);
+      
         const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=en`; // İngilizce için lang=en
-        console.log('Oluşturulan URL:', url); // URL'yi kontrol et
+       
         const response = await fetch(url);
         if (!response.ok) {
           const errorText = await response.text(); // Hata mesajını al
           throw new Error(`Hava durumu verileri alınamadı: ${response.status} - ${errorText}`);
         }
         const data = await response.json();
-        console.log('API yanıtı:', data); // Gelen veriyi kontrol et
+       
         setWeatherData({
           temp: Math.round(data.main.temp),
           description: data.weather[0].description,
@@ -36,16 +36,16 @@ const Weather = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          console.log('Kullanıcı konumu:', position.coords);
+         
           fetchWeather(position.coords.latitude, position.coords.longitude);
         },
         (err) => {
-          console.log('Konum alınamadı, İstanbul kullanılıyor:', err);
+          
           fetchWeather(41.0082, 28.9784);
         }
       );
     } else {
-      console.log('Geolocation desteklenmiyor, İstanbul kullanılıyor');
+      
       fetchWeather(41.0082, 28.9784);
     }
   }, []);

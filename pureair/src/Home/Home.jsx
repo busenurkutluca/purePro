@@ -30,13 +30,13 @@ function Home() {
         <h1 className="page-title">A Cleaner Future with PureAir</h1>
         <div className="nav-icon-container">
           <Link to="/map">
-            <FontAwesomeIcon icon={faMap} className="nav-icon" title="Harita"/> 
+            <FontAwesomeIcon icon={faMap} className="nav-icon" title="Map"/> 
           </Link>
           <Link to="/graph">
-            <FontAwesomeIcon icon={faChartLine} className="nav-icon" title="Grafik" />
+            <FontAwesomeIcon icon={faChartLine} className="nav-icon" title="Graph" />
           </Link>
           <Link to="/detayli-analiz">
-            <FontAwesomeIcon icon={faMagnifyingGlassChart} className="nav-icon" title="Detaylı Analiz" />
+            <FontAwesomeIcon icon={faMagnifyingGlassChart} className="nav-icon" title="Detailed Analysis" />
           </Link>
         </div>
       </header>
